@@ -38,3 +38,19 @@ Example of Sawyer robot learning to reach the target with paralleled Soft Actor-
 <img src="https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics/blob/master/figures/training.png" width="80%">
 </p>
 
+## Author:
+[Zihan Ding](https://github.com/quantumiracle)
+
+
+## Citing:
+
+```
+@misc{DeepReinforcementLearning-Project2-RLforRobotLearning,
+  author = {Zihan Ding},
+  title = {Project2-RLforRobotLearning},
+  year = {2019},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics}},
+}
+```
