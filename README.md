@@ -1,6 +1,10 @@
-# Project2: RL-for-Robotics
+# Project2: RL for Robotics
 ## Description:
 Example of Sawyer robot learning to reach the target with paralleled SAC algorithm, using PyRep for Sawyer robot simulation and game building. The environment is wrapped into OpenAI Gym format.
+<p align="center">
+<img src="https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics/blob/master/figures/reacher.png" width="40%">
+</p>
+
 ## Dependencies:
 * [V-REP](http://www.coppeliarobotics.com/)
 * [PyRep](https://github.com/stepjam/PyRep)
