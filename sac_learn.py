@@ -484,7 +484,7 @@ if __name__ == '__main__':
         # single process for testing
         trained_model_path = './model/trained_model/sac_multi'
         sac_trainer.load_model(trained_model_path)
-        for eps in range(100):
+        for eps in range(30):
             state =  env.reset()
             episode_reward = 0
 
