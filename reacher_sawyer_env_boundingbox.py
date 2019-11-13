@@ -139,7 +139,7 @@ class ReacherEnv(object):
             # print('after: ', ori_z, -self.agent_ee_tip.get_orientation()[2])
 
         else:
-            print("Potential Movement Out of the Bounding Box!")
+            # print("Potential Movement Out of the Bounding Box!")
             pass # no action if potentially moving out of the bounding box
 
     def reset(self, random_target=False):
@@ -257,7 +257,7 @@ class ReacherEnv(object):
 if __name__ == '__main__':
     CONTROL_MODE='end_position'  # 'end_position' or 'joint_velocity'
     env=ReacherEnv(headless=False, control_mode=CONTROL_MODE)
-    for eps in range(30):
+    for eps in range(3):
         env.reset()
         for step in range(30):
             # print(step)
