@@ -39,7 +39,7 @@ Example of Sawyer robot learning to reach the target with paralleled Soft Actor-
 </p>
 
 ## Authors:
-[Zihan Ding](https://github.com/quantumiracle), Yanhua Huang
+[Zihan Ding](https://github.com/quantumiracle), [Yanhua Huang](https://github.com/Officium)
 
 
 ## Citing:
