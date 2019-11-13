@@ -1,6 +1,6 @@
 # Project2: RL for Robotics
 ## Description:
-Example of Sawyer robot learning to reach the target with paralleled SAC algorithm, using PyRep for Sawyer robot simulation and game building. The environment is wrapped into OpenAI Gym format.
+Example of Sawyer robot learning to reach the target with paralleled Soft Actor-Critic (SAC) algorithm, using PyRep for Sawyer robot simulation and game building. The environment is wrapped into OpenAI Gym format.
 <p align="center">
 <img src="https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics/blob/master/figures/reacher.png" width="40%">
 </p>
@@ -9,6 +9,19 @@ Example of Sawyer robot learning to reach the target with paralleled SAC algorit
 * [V-REP](http://www.coppeliarobotics.com/)
 * [PyRep](https://github.com/stepjam/PyRep)
 * PyTorch
+
+## Contents:
+* `arms/`: object models of arms;
+* `hands/`: object models of grippers;
+* `objects/`: models of other objects in the scene;
+* `scenes/`: built scenes for Sawyer robot grasping;
+* `figures/`: figures for displaying;
+* `model/`: models after training;
+* `reacher_sawyer_env_boundingbox.py`: script of Sawyer robot grasping envrionment;
+* `sac_learn.py`: pralleled Soft Actor-Critic algorithm for solving Sawyer robot grasping task;
+* `reward_log.npy`: log of episode reward during training;
+* `plot.ipynb`: displaying the learning curves.
+
 
 ## Usage:
 0. First check the environment can run successfully:
@@ -24,3 +37,4 @@ Example of Sawyer robot learning to reach the target with paralleled SAC algorit
 <p align="center">
 <img src="https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics/blob/master/figures/training.png" width="80%">
 </p>
+
