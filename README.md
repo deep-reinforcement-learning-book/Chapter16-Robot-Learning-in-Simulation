@@ -6,7 +6,7 @@ Example of Sawyer robot learning to reach the target with paralleled Soft Actor-
 </p>
 
 ## Dependencies:
-* [V-REP](http://www.coppeliarobotics.com/)
+* [V-REP 3.6.2](http://www.coppeliarobotics.com/)
 * [PyRep](https://github.com/stepjam/PyRep)
 * PyTorch
 
