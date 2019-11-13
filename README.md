@@ -2,7 +2,7 @@
 ## Description:
 Example of Sawyer robot learning to reach the target with paralleled Soft Actor-Critic (SAC) algorithm, using PyRep for Sawyer robot simulation and game building. The environment is wrapped into OpenAI Gym format.
 <p align="center">
-<img src="https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics/blob/master/figures/reacher.png" width="40%">
+<img src="https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics/blob/master/figures/reacher.gif" width="40%">
 </p>
 
 ## Dependencies:
