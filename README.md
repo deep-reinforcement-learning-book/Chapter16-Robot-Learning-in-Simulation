@@ -16,7 +16,7 @@ Example of Sawyer robot learning to reach the target with paralleled Soft Actor-
 * `objects/`: models of other objects in the scene;
 * `scenes/`: built scenes for Sawyer robot grasping;
 * `figures/`: figures for displaying;
-* `model/`: models after training;
+* `model/`: the model after training, and two pre-trained models with different reward functions;
 * `data/`: reward logs of with different reward functions;
 * `reacher_sawyer_env_boundingbox.py`: script of Sawyer robot grasping envrionment;
 * `sac_learn.py`: pralleled Soft Actor-Critic algorithm for solving Sawyer robot grasping task;
@@ -34,7 +34,7 @@ Example of Sawyer robot learning to reach the target with paralleled Soft Actor-
 
 2. Run `$ python sac_learn.py --test` for testing the trained policy, remember to change the `trained_model_path`, which is default to be the trained model we provided.
 
-3. The training process will provide a `reward_log.npy` file for recording the reward value during training, which can be displayed with `$ jupyter notebook` in a new terminal, choose `plot.ipynb`and Shift+Enter, as follows:
+3. The training process will provide a `reward_log.npy` file for recording the reward value during training, which can be displayed with `$ jupyter notebook` in a new terminal, choose `plot.ipynb`and Shift+Enter to run the first cell, shown as follows:
 <p align="center">
 <img src="https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics/blob/master/figures/training.png" width="80%">
 </p>
