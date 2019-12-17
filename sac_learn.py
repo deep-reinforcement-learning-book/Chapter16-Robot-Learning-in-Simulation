@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 from IPython.display import display
 
-from reacher_sawyer_env_boundingbox import ReacherEnv
+from reacher_sawyer_env_boundingbox import GraspEnv
 import argparse
 import time
 import pickle
@@ -324,13 +324,13 @@ class SAC_Trainer():
 
 
 def worker(id, sac_trainer, rewards_queue, replay_buffer, max_episodes, max_steps, batch_size, explore_steps, \
-            update_itr, AUTO_ENTROPY, DETERMINISTIC, USE_DEMONS, hidden_dim, model_path):
+            update_itr, AUTO_ENTROPY, DETERMINISTIC, USE_DEMONS, hidden_dim, model_path, headless):
     '''
     the function for sampling with multi-processing
     '''
 
     print(sac_trainer, replay_buffer)  # sac_tainer are not the same, but all networks and optimizers in it are the same; replay  buffer is the same one.
-    env = ReacherEnv(headless=True)  # no need to configure different port_number for calling different Vrep env at the same time
+    env = GraspEnv(headless=headless)  # no need to configure different port_number for calling different Vrep env at the same time
 
     action_dim = env.action_space.shape[0]
     state_dim  = env.observation_space.shape[0]
@@ -341,6 +341,11 @@ def worker(id, sac_trainer, rewards_queue, replay_buffer, max_episodes, max_step
         
         episode_reward = 0
         state =  env.reset()
+
+        # reinitialize the environment every fixed interval during training,
+        # to avoid the problems in environment, e.g. broken gripper, etc
+        if eps%20==0 and eps>0:
+            env.reinit()   
         
         for step in range(max_steps):
             if frame_idx > explore_steps:
@@ -358,8 +363,7 @@ def worker(id, sac_trainer, rewards_queue, replay_buffer, max_episodes, max_step
             state = next_state
             episode_reward += reward
             frame_idx += 1
-            
-            
+              
             # if len(replay_buffer) > batch_size:
             if replay_buffer.get_length() > batch_size:
                 for i in range(update_itr):
@@ -404,25 +408,14 @@ def plot(rewards):
 if __name__ == '__main__':
 
     replay_buffer_size = 1e6
-    # replay_buffer = ReplayBuffer(replay_buffer_size)
-
     # the replay buffer is a class, have to use torch manager to make it a proxy for sharing across processes
     BaseManager.register('ReplayBuffer', ReplayBuffer)
     manager = BaseManager()
     manager.start()
     replay_buffer = manager.ReplayBuffer(replay_buffer_size)  # share the replay buffer through manager
 
-
-    # choose env
-    env = ReacherEnv(headless=True)
-
-    action_dim = env.action_space.shape[0]
-    state_dim  = env.observation_space.shape[0]
-    action_range=1  # 0.1 for end_position control and 1 for joint_velocity control
-    env.shutdown()
-
     # hyper-parameters for RL training, no need for sharing across processes
-    max_episodes  = 100000
+    max_episodes  = 500000
     max_steps   = 30 
     explore_steps = 0  # for random action sampling in the beginning of training
     batch_size=128
@@ -432,13 +425,22 @@ if __name__ == '__main__':
     USE_DEMONS = False  # using demonstrations
     hidden_dim = 512
     model_path = './model/sac_multi'
-    num_workers=2  # or: mp.cpu_count() 
+    num_workers=6  # or: mp.cpu_count() 
+    headless = True  # if headless is True, no visualization
+
+    # choose env
+    env = GraspEnv(headless=headless)
+
+    action_dim = env.action_space.shape[0]
+    state_dim  = env.observation_space.shape[0]
+    action_range=1.  # 0.1 for end_position control and 1. for joint_velocity control
+    env.shutdown()
     
 
     sac_trainer=SAC_Trainer(replay_buffer, hidden_dim=hidden_dim, action_range=action_range )
 
     if args.train:
-        sac_trainer.load_model(model_path)
+        #sac_trainer.load_model(model_path)  # if using pre-training
 
         # share the global parameters in multiprocessing
         sac_trainer.soft_q_net1.share_memory() 
@@ -458,7 +460,7 @@ if __name__ == '__main__':
 
         for i in range(num_workers):
             process = Process(target=worker, args=(i, sac_trainer, rewards_queue, replay_buffer, max_episodes, max_steps, \
-            batch_size, explore_steps, update_itr, AUTO_ENTROPY, DETERMINISTIC, USE_DEMONS, hidden_dim, model_path))  # the args contain shared and not shared
+            batch_size, explore_steps, update_itr, AUTO_ENTROPY, DETERMINISTIC, USE_DEMONS, hidden_dim, model_path, headless))  # the args contain shared and not shared
             process.daemon=True  # all processes closed when the main stops
             processes.append(process)
 
@@ -471,7 +473,7 @@ if __name__ == '__main__':
                 break
 
             if len(rewards)%20==0 and len(rewards)>0:
-                plot(rewards)
+                # plot(rewards)
                 np.save('reward_log', rewards)
 
 
@@ -480,10 +482,10 @@ if __name__ == '__main__':
         sac_trainer.save_model(model_path)
 
     if args.test:
-        env = ReacherEnv(headless=False, control_mode='joint_velocity') # for visualizing in test
-        # single process for testing
-        trained_model_path = './model/trained_model/sac_multi'
-        sac_trainer.load_model(trained_model_path)
+        env = GraspEnv(headless=False, control_mode='joint_velocity') # for visualizing in test
+        trained_model_path1 = './model/trained_model/augmented_dense_reward/sac_multi'  # pre-trained model with augmented dense reward
+        trained_model_path2 = './model/trained_model/dense_reward/sac_multi'  # pre-trained model with dense reward
+        sac_trainer.load_model(model_path)  # new model after training
         for eps in range(30):
             state =  env.reset()
             episode_reward = 0
@@ -491,7 +493,6 @@ if __name__ == '__main__':
             for step in range(max_steps):
                 action = sac_trainer.policy_net.get_action(state, deterministic = DETERMINISTIC)
                 next_state, reward, done, _ = env.step(action)  
-
                 episode_reward += reward
                 state=next_state
 

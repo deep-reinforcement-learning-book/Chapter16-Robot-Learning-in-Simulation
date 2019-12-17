@@ -1,4 +1,4 @@
-# Project4: RL for Robotics
+# Project2: RL for Robotics
 ## Description:
 Example of Sawyer robot learning to reach the target with paralleled Soft Actor-Critic (SAC) algorithm, using PyRep for Sawyer robot simulation and game building. The environment is wrapped into OpenAI Gym format.
 <p align="center">
@@ -17,6 +17,7 @@ Example of Sawyer robot learning to reach the target with paralleled Soft Actor-
 * `scenes/`: built scenes for Sawyer robot grasping;
 * `figures/`: figures for displaying;
 * `model/`: models after training;
+* `data/`: reward logs of with different reward functions;
 * `reacher_sawyer_env_boundingbox.py`: script of Sawyer robot grasping envrionment;
 * `sac_learn.py`: pralleled Soft Actor-Critic algorithm for solving Sawyer robot grasping task;
 * `reward_log.npy`: log of episode reward during training;
@@ -45,12 +46,12 @@ Example of Sawyer robot learning to reach the target with paralleled Soft Actor-
 ## Citing:
 
 ```
-@misc{DeepReinforcementLearning-Project4-RLforRobotLearning,
+@misc{DeepReinforcementLearning-Project2-RLforRobotLearning,
   author = {Zihan Ding, Yanhua Huang},
-  title = {Project4-RLforRobotLearning},
+  title = {Project2-RLforRobotLearning},
   year = {2019},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/deep-reinforcement-learning-book/Project4-RL-for-Robotics}},
+  howpublished = {\url{https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics}},
 }
 ```
