@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 from IPython.display import display
 
-from reacher_sawyer_env_boundingbox import GraspEnv
+from sawyer_grasp_env_boundingbox import GraspEnv
 import argparse
 import time
 import pickle

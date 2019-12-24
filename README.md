@@ -22,7 +22,7 @@ Note:
 * `figures/`: figures for displaying;
 * `model/`: the model after training, and two pre-trained models with different reward functions;
 * `data/`: reward logs of with different reward functions;
-* `reacher_sawyer_env_boundingbox.py`: script of Sawyer robot grasping envrionment;
+* `sawyer_grasp_env_boundingbox.py`: script of Sawyer robot grasping environment;
 * `sac_learn.py`: pralleled Soft Actor-Critic algorithm for solving Sawyer robot grasping task;
 * `reward_log.npy`: log of episode reward during training;
 * `plot.ipynb`: displaying the learning curves.
@@ -31,7 +31,7 @@ Note:
 ## Usage:
 0. First check the environment can run successfully:
 
-    `$ python reacher_sawyer_env_boundingbox.py`
+    `$ python sawyer_grasp_env_boundingbox.py`
 
     If it works properly with VRep called to run a scene, with Sawyer robot arm moving randomly, then go to next step; otherwise check the dependencies for necessary packages and versions.
 1. Run `$ python sac_learn.py --train` for training the policy
