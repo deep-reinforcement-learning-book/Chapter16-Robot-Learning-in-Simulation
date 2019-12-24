@@ -6,9 +6,13 @@ Example of Sawyer robot learning to reach the target with paralleled Soft Actor-
 </p>
 
 ## Dependencies:
-* [V-REP 3.6.2](http://www.coppeliarobotics.com/)
-* [PyRep](https://github.com/stepjam/PyRep)
+* [V-REP 3.6.2](http://www.coppeliarobotics.com/previousVersions)
+* [PyRep](https://github.com/deep-reinforcement-learning-book/PyRep)
 * PyTorch
+
+Note:
+* The later version of V-REP 3.6.2 is renamed CoppeliaSim after verison 4.0.0, which may have some incompatible issues with PyRep during the process of this project, so we suggest to use V-REP 3.6.2 [here](http://www.coppeliarobotics.com/previousVersions) and the maintained PyRep in our repository.
+* The official repository of PyRep is [here](https://github.com/stepjam/PyRep), but we maintain a stable version [here](https://github.com/deep-reinforcement-learning-book/PyRep) in our repository for supporting V-REP 3.6.2, please use the version we provide ([here](https://github.com/deep-reinforcement-learning-book/PyRep)) for avoiding unnecessary incompatibility.
 
 ## Contents:
 * `arms/`: object models of arms;
