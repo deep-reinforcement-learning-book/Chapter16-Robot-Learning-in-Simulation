@@ -1,4 +1,4 @@
-# Project2: RL for Robotics
+# Chapter 17: Robot Learning in Simulation
 ## Description:
 Example of Sawyer robot learning to reach the target with paralleled Soft Actor-Critic (SAC) algorithm, using PyRep for Sawyer robot simulation and game building. The environment is wrapped into OpenAI Gym format.
 <p align="center">
