@@ -1,8 +1,8 @@
-# Project2: RL for Robotics
+# Chapter 17: Robot Learning in Simulation (Project 4)
 ## Description:
 Example of Sawyer robot learning to reach the target with paralleled Soft Actor-Critic (SAC) algorithm, using PyRep for Sawyer robot simulation and game building. The environment is wrapped into OpenAI Gym format.
 <p align="center">
-<img src="https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics/blob/master/figures/reacher.gif" width="40%">
+<img src="https://github.com/deep-reinforcement-learning-book/Chapter17-Robot-Learning-in-Simulation/blob/master/figures/reacher.gif" width="40%">
 </p>
 
 ## Dependencies:
@@ -40,7 +40,7 @@ Note:
 
 3. The training process will provide a `reward_log.npy` file for recording the reward value during training, which can be displayed with `$ jupyter notebook` in a new terminal, choose `plot.ipynb`and Shift+Enter to run the first cell, shown as follows:
 <p align="center">
-<img src="https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics/blob/master/figures/training.png" width="80%">
+<img src="https://github.com/deep-reinforcement-learning-book/Chapter17-Robot-Learning-in-Simulation/blob/master/figures/training.png" width="80%">
 </p>
 
 ## Authors:
@@ -50,12 +50,12 @@ Note:
 ## Citing:
 
 ```
-@misc{DeepReinforcementLearning-Project2-RLforRobotLearning,
+@misc{DeepReinforcementLearning-Chapter17-RobotLearninginSimulation,
   author = {Zihan Ding, Yanhua Huang},
-  title = {Project2-RLforRobotLearning},
+  title = {Chapter17-RobotLearninginSimulation},
   year = {2019},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/deep-reinforcement-learning-book/Project2-RL-for-Robotics}},
+  howpublished = {\url{https://github.com/deep-reinforcement-learning-book/Chapter17-Robot-Learning-in-Simulation}},
 }
 ```
