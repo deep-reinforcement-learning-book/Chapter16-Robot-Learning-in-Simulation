@@ -294,7 +294,7 @@ if __name__ == '__main__':
         for step in range(30):
             if CONTROL_MODE=='end_position':
                 action=np.random.uniform(-0.2,0.2,4)  #  4 dim control for 'end_position': 3 positions and 1 rotation (z-axis)
-            elif CONTROL_MODE=='end_position':
+            elif CONTROL_MODE=='joint_velocity':
                 action=np.random.uniform(-2.,2.,7)
             else:
                 raise NotImplementedError
