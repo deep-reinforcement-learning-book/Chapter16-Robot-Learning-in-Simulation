@@ -59,3 +59,17 @@ Note:
   howpublished = {\url{https://github.com/deep-reinforcement-learning-book/Chapter16-Robot-Learning-in-Simulation}},
 }
 ```
+
+or
+
+```
+@misc{DeepReinforcementLearning-Chapter15-AlphaZero,
+  author = {Hongming Zhang, Tianyang Yu},
+  title = {Chapter15-AlphaZero},
+  year = {2019},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/deep-reinforcement-learning-book/Chapter15-AlphaZero}},
+}
+```
+
